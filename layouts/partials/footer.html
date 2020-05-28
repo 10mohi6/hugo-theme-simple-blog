@@ -1,0 +1,9 @@
+<footer class="text-center bg-dark pt-5">
+  <a href="{{ .Site.BaseURL }}" class="text-muted">Home</a>
+  {{ range .Site.Menus.main }}
+  <a href="{{ .URL }}" class="text-muted pl-4">{{ .Name }}</a>
+  {{ end }}
+  <p class="pb-4 pt-4 mb-0">{{ .Site.Copyright }} <a href="https://gohugo.io/" class="text-reset">hugo</a> <a href="https://10mohi6.tk" class="text-reset">10mohi6</a> <a href="https://github.com/10mohi6/hugo-theme-simple-blog" class="text-reset">simple-blog</a></p>
+</footer>
+</body>
+</html>

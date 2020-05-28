@@ -1,0 +1,51 @@
+{{ partial "header.html" . }}
+{{ $paginator := .Paginate ( where site.RegularPages "Type" "in" site.Params.mainSections ) }}
+{{ if eq .Kind "taxonomy" }}
+  {{ $paginator = .Data }}
+{{ end }}
+<header class="text-center bg-dark pt-5 pb-5">
+  {{ if not .IsHome }}
+  <h1 class="text-white pt-5 pb-3">{{ .Title }}</h1>
+  <p class="text-white pb-4 text-muted">
+    <a href="{{ .Site.BaseURL }}" class="text-reset pr-4">Back to Home</a>{{ len .Data.Pages }} Articles to read
+  </p>
+  {{ else }}
+  <h1 class="text-white pt-5 pb-3"><a href="{{ .Site.BaseURL }}" class="text-reset">{{ .Site.Title }}</a></h1>
+  <p class="pb-5"></p>
+  {{ end }}
+</header>
+<div class="container pt-3">
+  {{ range $paginator.Pages }}
+  <div class="row pt-3 pb-3">
+    <div class="col-12">
+      {{ range .Params.categories }}
+      <a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/" class="text-success">{{ . }}</a>
+      {{ end }}
+      <h2 class="pt-1">
+        <a href="{{ .Permalink }}" class="text-dark">{{ .Title }}</a>
+      </h2>
+      <p class="text-secondary">{{.Date.Format "January 2, 2006"}}</p>
+      <div class="pb-1">
+        {{ .Summary | plainify | htmlUnescape }}
+      </div>
+      {{ range .Params.tags }}
+      <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/" class="text-info">#{{ . }}</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+  <div class="row pt-3 pb-3">
+    <div class="col-12">
+      <nav>
+        <ul class="pagination">
+        {{ range $paginator.Pagers }}
+          <li class="page-item {{ if eq $paginator.PageNumber .PageNumber }}active{{ end }}">
+            <a class="page-link" href="{{ .URL }}">{{.PageNumber}}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </nav>    
+    </div>
+  </div>
+</div>
+{{ partial "footer.html" . }}

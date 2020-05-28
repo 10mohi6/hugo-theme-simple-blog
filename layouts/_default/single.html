@@ -1,0 +1,31 @@
+{{ partial "header.html" . }}
+<header class="text-center bg-dark pt-5 pb-5">
+  {{ range .Params.categories }}
+  <a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/" class="text-success">{{ . }}</a>
+  {{ end }}
+  <h1 class="text-white pt-4 pb-3">{{ .Title }}</h1>
+  <p class="text-secondary">{{.Date.Format "January 2, 2006"}}</p>
+  {{ range .Params.tags }}
+  <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/" class="text-info">#{{ . }}</a>
+  {{ end }}
+</header>
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-12">
+      {{ .Content }}
+    </div>
+  </div>
+  <div class="row pt-5 pb-5">
+    <div class="col-6 text-left">
+    {{ with .PrevInSection }}
+      <a class="text-reset" href="{{ .Permalink }}">< {{ .Title }}</a>
+    {{ end }}
+    </div>
+    <div class="col-6 text-right">
+    {{ with .NextInSection }}
+      <a class="text-reset" href="{{ .Permalink }}">{{ .Title }} ></a>
+    {{ end }}
+    </div>
+  </div>
+</div>
+{{ partial "footer.html" . }}
