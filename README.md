@@ -10,7 +10,6 @@ simple-blog is a simple blog theme for [hugo](http://gohugo.io/).
 - pagination
 - tags
 - categories
-- js unused
 
 ## Installation
 
