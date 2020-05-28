@@ -3,7 +3,7 @@
 {{ if eq .Kind "taxonomy" }}
   {{ $paginator = .Data }}
 {{ end }}
-<header class="text-center bg-dark pt-5 pb-5">
+<header class="text-center bg-dark pt-5 pb-5 col-12">
   {{ if not .IsHome }}
   <h1 class="text-white pt-5 pb-3">{{ .Title }}</h1>
   <p class="text-white pb-4 text-muted">

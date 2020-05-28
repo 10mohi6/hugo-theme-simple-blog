@@ -1,5 +1,5 @@
 {{ partial "header.html" . }}
-<header class="text-center bg-dark pt-5 pb-5">
+<header class="text-center bg-dark pt-5 pb-5 col-12">
   {{ range .Params.categories }}
   <a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/" class="text-success">{{ . }}</a>
   {{ end }}
