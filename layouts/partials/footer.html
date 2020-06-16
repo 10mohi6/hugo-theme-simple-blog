@@ -1,9 +1,30 @@
-<footer class="text-center bg-dark pt-5 col-12">
-  <a href="{{ .Site.BaseURL }}" class="text-muted">Home</a>
-  {{ range .Site.Menus.main }}
-  <a href="{{ .URL }}" class="text-muted pl-4">{{ .Name }}</a>
-  {{ end }}
-  <p class="pb-4 pt-4 mb-0">{{ .Site.Copyright }} <a href="https://gohugo.io/" class="text-reset">hugo</a> <a href="https://10mohi6.tk" class="text-reset">10mohi6</a> <a href="https://github.com/10mohi6/hugo-theme-simple-blog" class="text-reset">simple-blog</a></p>
+<footer class="site-footer mt-5">
+  <div class="container">
+      <div class="row justify-content-md-between">
+          <div class="col-sm-12 col-md-4 mb-4">
+              <h2 class="h5 mb-3">{{ .Site.Title }}</h2>
+              <p>{{.Site.Params.Description}}</p>
+          </div>
+          <div class="col-4 col-md-2 mb-4">
+              <h2 class="h5 mb-3">Menu</h2>
+              <ul class="nav flex-column">
+                  <li class="mb-1"><a href="{{ .Site.BaseURL }}" class="text-secondary">Home</a></li>
+                  {{ range .Site.Menus.main }}
+                  <li class="mb-1"><a href="{{ .URL }}" class="text-secondary">{{ .Name }}</a></li>
+                  {{ end }}
+              </ul>
+          </div>
+      </div>
+
+      <hr/>
+
+      <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center">
+          <div class="text-muted mb-3">
+              {{ .Site.Copyright }}
+              <a href="https://10mohi6.tk" class="text-reset">design</a> <a href="https://github.com/10mohi6/hugo-theme-simple-blog" class="text-reset">theme</a></p>
+          </div>
+      </div>
+  </div>
 </footer>
 </body>
 </html>

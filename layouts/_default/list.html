@@ -3,49 +3,49 @@
 {{ if eq .Kind "taxonomy" }}
   {{ $paginator = .Data }}
 {{ end }}
-<header class="text-center bg-dark pt-5 pb-5 col-12">
-  {{ if not .IsHome }}
-  <h1 class="text-white pt-5 pb-3">{{ .Title }}</h1>
-  <p class="text-white pb-4 text-muted">
-    <a href="{{ .Site.BaseURL }}" class="text-reset pr-4">Back to Home</a>{{ len .Data.Pages }} Articles to read
-  </p>
-  {{ else }}
-  <h1 class="text-white pt-5 pb-3"><a href="{{ .Site.BaseURL }}" class="text-reset">{{ .Site.Title }}</a></h1>
-  <p class="pb-5"></p>
-  {{ end }}
-</header>
-<div class="container pt-3">
-  {{ range $paginator.Pages }}
-  <div class="row pt-3 pb-3">
-    <div class="col-12">
-      {{ range .Params.categories }}
-      <a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/" class="text-success">{{ . }}</a>
-      {{ end }}
-      <h2 class="pt-1">
-        <a href="{{ .Permalink }}" class="text-dark">{{ .Title }}</a>
-      </h2>
-      <p class="text-secondary">{{.Date.Format "January 2, 2006"}}</p>
-      <div class="pb-1">
-        {{ .Summary | plainify | htmlUnescape }}
-      </div>
-      {{ range .Params.tags }}
-      <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/" class="text-info">#{{ . }}</a>
-      {{ end }}
-    </div>
-  </div>
-  {{ end }}
-  <div class="row pt-3 pb-3">
-    <div class="col-12">
-      <nav>
-        <ul class="pagination">
-        {{ range $paginator.Pagers }}
-          <li class="page-item {{ if eq $paginator.PageNumber .PageNumber }}active{{ end }}">
-            <a class="page-link" href="{{ .URL }}">{{.PageNumber}}</a>
-          </li>
-        {{ end }}
-        </ul>
-      </nav>    
-    </div>
-  </div>
-</div>
+    <main id="main">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <h1 class="display-4 my-5 my-lg-6 pb-lg-4 text-center">{{ if not .IsHome }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="bg-skew bg-skew-light">
+            <div class="container py-4">
+                <div class="row">
+                    {{ range $paginator.Pages }}
+                    <div class="col-lg-6">
+                        <div class="card card-hover mb-5 mx-lg-2">
+                            <div class="card-body pt-5 px-5 pb-4 text-center">
+                                {{ range .Params.categories }}
+                                <a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}/" class="d-inline-block link-cta mb-4 text-uppercase">{{ . }}</a>
+                                {{ end }}
+                                <h2 class="card-title mb-4">
+                                    <a class="stretched-link" href="{{ .Permalink }}">{{ .Title }}</a>
+                                </h2>
+                                <p class="small"><span class="text-uppercase">{{.Date.Format "January 2, 2006"}}</span></p>
+                                <p class="card-text">{{ .Summary | plainify | htmlUnescape }}</p>
+                                <p>
+                                    {{ range .Params.tags }}
+                                    <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}/" class="link-tag text-dark">#{{ . }}</a>
+                                    {{ end }}                              
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {{ range $paginator.Pagers }}
+                        <li class="page-item {{ if eq $paginator.PageNumber .PageNumber }}active{{ end }}">
+                          <a class="page-link" href="{{ .URL }}">{{.PageNumber}}</a>
+                        </li>
+                        {{ end }}              
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
 {{ partial "footer.html" . }}

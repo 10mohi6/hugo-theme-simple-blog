@@ -49,6 +49,9 @@ footnoteReturnLinkContents = "^"
 [taxonomies]
 category = "categories"
 tag = "tags"
+
+[params]
+description = "<your site description>"
 ```
 
 ## Contributing
