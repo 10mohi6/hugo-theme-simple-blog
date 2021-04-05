@@ -54,6 +54,8 @@ tag = "tags"
 description = "<your site description>"
 ```
 
+To add a favicon, place your image in `static/images/favicon.ico`
+
 ## Contributing
 
 1. Fork it
