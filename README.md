@@ -14,13 +14,13 @@ simple-blog is a simple blog theme for [hugo](http://gohugo.io/).
 ## Installation
 
 ```shell
-$ git clone https://github.com/10mohi6/hugo-theme-simple-blog themes/simple-blog
+git clone https://github.com/10mohi6/hugo-theme-simple-blog themes/simple-blog
 ```
 
 ## Usage
 
 ```shell
-$ hugo server -t simple-blog
+hugo server -t simple-blog
 ```
 
 ## Configuration
